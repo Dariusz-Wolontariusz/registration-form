@@ -1,0 +1,15 @@
+/* reset */
+input,
+textarea,
+button {
+	all: unset;
+	box-sizing: border-box;
+}
+
+/* my styles */
+
+.form__firstName-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
