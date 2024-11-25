@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 /* Additional resets */
 *,
 *::before,
@@ -59,37 +61,37 @@ select {
 
 /* my styles */
 body {
-	background-color: #4b92de;
-	font-family: Arial, sans-serif;
+	background: linear-gradient(45deg, #0077b6, #80ffdb);
+	background-image: url('/images/mgla.png');
+	background-size: cover;
+	background-position: center;
+	font-family: Ubuntu mono, monospace;
 	color: #2b2f36;
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 20px;
-}
-
-h1 {
-	color: #2b2f36;
-	margin-bottom: 1rem;
+	margin: 0;
+	padding: 0;
+	/* border: 2px solid red; */
 }
 
 main {
 	padding: 1rem;
+	width: 100%;
+	min-height: 100vh;
+	/* border: 3px solid green; */
 }
 
-Form {
+h1 {
+	text-align: center;
+	font-size: 2rem;
+	color: #3b506b;
+	margin-bottom: 1.5rem;
+}
+
+section.form__container {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	border-style: solid;
-	border-color: red;
+	justify-content: center;
 }
 
-.form-field {
-	border-style: solid;
-	border-width: 1px;
-}
-
-.radio {
+/* .radio {
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
@@ -141,4 +143,4 @@ Form {
 	font-size: 1.3rem;
 	line-height: 1;
 	padding-left: 10px;
-}
+} */
