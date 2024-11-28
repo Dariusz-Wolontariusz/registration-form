@@ -1,5 +1,7 @@
 'use client'
 import './StepTwo.css'
+import PasswordInput from '../password/PasswordInput'
+import InputSection from '../inputSection/InputSection'
 import React, { useState } from 'react'
 import {
 	Form,
@@ -33,40 +35,32 @@ export default function StepTwo() {
 	}
 
 	return (
-		<Form className='form__root' onSubmit={handleSubmit}>
+		<Form className='form' onSubmit={handleSubmit}>
 			<h2>User Registration</h2>
-			<FormField className='form__field' name='firstName'>
-				<FormLabel className='form__label'>First Name</FormLabel>
-				<FormControl asChild>
-					<input
-						type='text'
-						className='form__input'
-						placeholder='First Name'
-						value={firstName}
-						onChange={(e) => setFirstName(e.target.value)}
-						required
-					/>
-				</FormControl>
-				<FormMessage className='form__message' match='valueMissing'>
-					* Please enter your first name
-				</FormMessage>
-			</FormField>
-			<FormField className='form__field' name='lastName'>
-				<FormLabel className='form__label'>Last Name</FormLabel>
-				<FormControl asChild>
-					<input
-						type='text'
-						className='form__input'
-						placeholder='Last Name'
-						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
-						required
-					/>
-				</FormControl>
-				<FormMessage className='form__message' match='valueMissing'>
-					* Please enter your last name
-				</FormMessage>
-			</FormField>
+			<InputSection
+				id='firstName'
+				fieldName='firstName'
+				placeholder='First Name'
+				label='First Name'
+				type='text'
+				value={firstName}
+				onChange={(e) => setFirstName(e.target.value)}
+				required
+
+				// errorMessage='* Please enter your first name'
+			/>
+			<InputSection
+				id='lastName'
+				fieldName='lastName'
+				placeholder='Last Name'
+				label='Last Name'
+				type='text'
+				value={lastName}
+				onChange={(e) => setLastName(e.target.value)}
+				required
+				errorMessage='* Please enter your last name'
+			/>
+
 			<FormField className='form__field' name='email'>
 				<FormLabel className='form__label'>Email Address</FormLabel>
 				<FormControl asChild>
@@ -110,17 +104,20 @@ export default function StepTwo() {
 			</FormField>
 			<FormField className='form__field' name='password'>
 				<FormLabel className='form__label'>Password</FormLabel>
-				<FormControl asChild>
-					<input
-						type='password'
-						className='form__input'
-						placeholder='Password'
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-					<></>
-				</FormControl>
+				<div>
+					<button tabIndex={100}>tfdfdfdfdfd</button>
+					<FormControl asChild>
+						<input
+							id='password'
+							placeholder='Setup a new password'
+							className='form__input'
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+						/>
+					</FormControl>
+				</div>
+
 				<FormMessage className='form__message' match='valueMissing'>
 					* Please enter a new password
 				</FormMessage>
@@ -140,8 +137,9 @@ export default function StepTwo() {
 				<FormLabel className='form__label'>Confirm Password</FormLabel>
 				<FormControl asChild>
 					<input
+						// id='password'
 						type='password'
-						className='form__input'
+						className='form__input password__input'
 						placeholder='Confirm Password'
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
@@ -158,13 +156,11 @@ export default function StepTwo() {
 					Entered password doesn't match with the new one
 				</FormMessage>
 			</FormField>
-			<FormField className='form__field' name='submit'>
-				<FormSubmit asChild>
-					<button className='form__submit-btn' type='submit'>
-						Submit
-					</button>
+			<div style={{ width: '100%' }}>
+				<FormSubmit id='my-submit' className='form__submit-btn'>
+					Submit
 				</FormSubmit>
-			</FormField>
+			</div>
 		</Form>
 	)
 }

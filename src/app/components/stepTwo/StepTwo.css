@@ -8,14 +8,14 @@ button {
 
 /* my styles */
 
-Form {
+form {
 	background: rgba(255, 255, 255, 0.6);
 	color: #003049;
 	padding: 2rem 4rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	align-items: start;
+	align-items: flex-start;
 	width: 100%;
 	max-width: 500px;
 	border-radius: 15px;
@@ -38,7 +38,7 @@ h2 {
 	max-width: 500px;
 }
 
-Label {
+label {
 	display: block;
 	font-size: 1rem;
 	color: #5f6e88;
@@ -69,7 +69,7 @@ Label {
 
 .form__input:focus[data-invalid] {
 	border-color: #f43838;
-	outline: none;
+
 	box-shadow: 0 0 5px rgba(252, 106, 106, 0.499);
 }
 
@@ -110,4 +110,37 @@ Label {
 
 .form__submit-btn:active {
 	transform: translateY(0);
+}
+.form__submit-btn:focus {
+	background: red;
+}
+
+.password__container {
+	display: flex;
+	position: relative;
+	width: 100%;
+	align-items: center;
+}
+
+.password__input {
+	flex-grow: 1;
+	padding-right: 3rem;
+}
+
+.password__btn {
+	position: absolute;
+	right: 5px;
+	/* background: none; */
+	border: none;
+	cursor: pointer;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.password__icon {
+	height: 20px;
+	width: 20px;
+	color: #3b506b;
 }
