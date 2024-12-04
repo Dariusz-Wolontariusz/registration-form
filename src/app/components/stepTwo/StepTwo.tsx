@@ -3,14 +3,7 @@ import './StepTwo.css'
 import PasswordInput from '../password/PasswordInput'
 import InputSection from '../inputSection/InputSection'
 import React, { useState } from 'react'
-import {
-	Form,
-	FormField,
-	FormLabel,
-	FormControl,
-	FormMessage,
-	FormSubmit,
-} from '@radix-ui/react-form'
+import { Form, FormSubmit } from '@radix-ui/react-form'
 
 export default function StepTwo() {
 	const [firstName, setFirstName] = useState('')
@@ -46,8 +39,7 @@ export default function StepTwo() {
 				value={firstName}
 				onChange={(e) => setFirstName(e.target.value)}
 				required
-
-				// errorMessage='* Please enter your first name'
+				validation={['required', 'minLength']}
 			/>
 			<InputSection
 				id='lastName'
@@ -58,104 +50,58 @@ export default function StepTwo() {
 				value={lastName}
 				onChange={(e) => setLastName(e.target.value)}
 				required
-				errorMessage='* Please enter your last name'
+				validation={['required', 'minLength']}
+			/>
+			<InputSection
+				id='email'
+				fieldName='email'
+				placeholder='Email Address'
+				label='Email Address'
+				type='email'
+				value={email}
+				onChange={(e) => setEmail(e.target.value)}
+				required
+				validation={['required', 'email']}
 			/>
 
-			<FormField className='form__field' name='email'>
-				<FormLabel className='form__label'>Email Address</FormLabel>
-				<FormControl asChild>
-					<input
-						type='email'
-						className='form__input'
-						placeholder='Email Address'
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</FormControl>
-				<FormMessage className='form__message' match='valueMissing'>
-					* Please enter your email address
-				</FormMessage>
-				<FormMessage className='form__message' match='typeMismatch'>
-					* Please enter a valid email address
-				</FormMessage>
-			</FormField>
-			<FormField className='form__field' name='confirmEmail'>
-				<FormLabel className='form__label'>Confirm Email Address</FormLabel>
-				<FormControl asChild>
-					<input
-						type='email'
-						className='form__input'
-						placeholder='Confirm Email Address'
-						value={confirmEmail}
-						onChange={(e) => setConfirmEmail(e.target.value)}
-						required
-					/>
-				</FormControl>
-				<FormMessage className='form__message' match='valueMissing'>
-					* Please confirm your email address
-				</FormMessage>
-				<FormMessage
-					className='form__message'
-					match={(value) => value !== email}
-				>
-					* Entered email address doesn't match with the previous one
-				</FormMessage>
-			</FormField>
-			<FormField className='form__field' name='password'>
-				<FormLabel className='form__label'>Password</FormLabel>
-				<div>
-					<button tabIndex={100}>tfdfdfdfdfd</button>
-					<FormControl asChild>
-						<input
-							id='password'
-							placeholder='Setup a new password'
-							className='form__input'
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							required
-						/>
-					</FormControl>
-				</div>
+			<InputSection
+				id='confirmEmail'
+				fieldName='confirmEmail'
+				placeholder='Confirm Email Address'
+				label='Confirm Email Address'
+				type='email'
+				value={confirmEmail}
+				onChange={(e) => setConfirmEmail(e.target.value)}
+				required
+				validation={['required', 'email', 'confirmField']}
+				compareValue={email}
+			/>
 
-				<FormMessage className='form__message' match='valueMissing'>
-					* Please enter a new password
-				</FormMessage>
-				<FormMessage
-					className='form__message'
-					match={(value) =>
-						!/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
-							value
-						)
-					}
-				>
-					Password must be at least 8 characters long, contain 1 uppercase, 1
-					digit and 1 special character
-				</FormMessage>
-			</FormField>
-			<FormField className='form__field' name='confirmPassword'>
-				<FormLabel className='form__label'>Confirm Password</FormLabel>
-				<FormControl asChild>
-					<input
-						// id='password'
-						type='password'
-						className='form__input password__input'
-						placeholder='Confirm Password'
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-					/>
-				</FormControl>
-				<FormMessage className='form__message' match='valueMissing'>
-					* Please confirm a new password
-				</FormMessage>
-				<FormMessage
-					className='form__message'
-					match={(value) => value !== password}
-				>
-					Entered password doesn't match with the new one
-				</FormMessage>
-			</FormField>
+			<InputSection
+				id='password'
+				fieldName='password'
+				label='Password'
+				type='password'
+				value={password}
+				placeholder='Password'
+				required
+				onChange={(e) => setPassword(e.target.value)}
+				validation={['required', 'password']}
+			/>
+
+			<InputSection
+				id='confirmPassword'
+				fieldName='confirmPassword'
+				label='Confirm Password'
+				placeholder='Confirm Password'
+				type='password'
+				value={confirmPassword}
+				required
+				onChange={(e) => setConfirmPassword(e.target.value)}
+				validation={['required', 'confirmField']}
+				compareValue={password}
+			/>
+
 			<div style={{ width: '100%' }}>
 				<FormSubmit id='my-submit' className='form__submit-btn'>
 					Submit
