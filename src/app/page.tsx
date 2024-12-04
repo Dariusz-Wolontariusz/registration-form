@@ -1,5 +1,4 @@
-import { StepOne } from './components/StepOne'
-import StepTwo from './components/stepTwo/StepTwo'
+import StepOne from './components/stepOne/StepOne'
 
 export default function Home() {
 	return (
@@ -8,7 +7,7 @@ export default function Home() {
 				<h1>Welcome to The Registration Form</h1>
 			</header>
 			<section className='form__container'>
-				<StepTwo />
+				<StepOne />
 			</section>
 		</main>
 	)

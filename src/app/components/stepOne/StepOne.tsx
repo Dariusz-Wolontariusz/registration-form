@@ -1,11 +1,11 @@
 'use client'
-import './StepTwo.css'
-import PasswordInput from '../password/PasswordInput'
+import './StepOne.css'
+// import PasswordInput from '../password/PasswordInput'
 import InputSection from '../inputSection/InputSection'
 import React, { useState } from 'react'
 import { Form, FormSubmit } from '@radix-ui/react-form'
 
-export default function StepTwo() {
+export default function StepOne() {
 	const [firstName, setFirstName] = useState('')
 	const [lastName, setLastName] = useState('')
 	const [email, setEmail] = useState('')
@@ -102,11 +102,11 @@ export default function StepTwo() {
 				compareValue={password}
 			/>
 
-			<div style={{ width: '100%' }}>
-				<FormSubmit id='my-submit' className='form__submit-btn'>
+			<FormSubmit asChild>
+				<button id='my-submit' className='form__submit-btn'>
 					Submit
-				</FormSubmit>
-			</div>
+				</button>
+			</FormSubmit>
 		</Form>
 	)
 }
