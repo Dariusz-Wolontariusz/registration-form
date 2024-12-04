@@ -12,6 +12,7 @@ export default function StepOne() {
 	const [confirmEmail, setConfirmEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
+	const [isDisabled, setIsDisabled] = useState(false)
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
@@ -25,6 +26,13 @@ export default function StepOne() {
 			})
 		)
 		console.log({ firstName, lastName, email, password })
+		setFirstName('')
+		setLastName('')
+		setEmail('')
+		setConfirmEmail('')
+		setPassword('')
+		setConfirmPassword('')
+		setIsDisabled(true)
 	}
 
 	return (
@@ -103,7 +111,12 @@ export default function StepOne() {
 			/>
 
 			<FormSubmit asChild>
-				<button id='my-submit' className='form__submit-btn'>
+				<button
+					id='my-submit'
+					className='form__submit-btn'
+					type='submit'
+					disabled={isDisabled}
+				>
 					Submit
 				</button>
 			</FormSubmit>
