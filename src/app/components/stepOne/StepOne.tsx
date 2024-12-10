@@ -44,7 +44,7 @@ export default function StepOne() {
 				fieldName='firstName'
 				placeholder='First Name'
 				label='First Name'
-				type='radio'
+				type='text'
 				value={firstName}
 				onChange={(e) => setFirstName(e.target.value)}
 				required
@@ -110,7 +110,7 @@ export default function StepOne() {
 				validation={['required', 'confirmField']}
 				compareValue={password}
 			/>
-			<PasswordInput
+			{/* <PasswordInput
 				id='password'
 				fieldName='password'
 				type='password'
@@ -120,7 +120,7 @@ export default function StepOne() {
 				required
 				onChange={(e) => setPassword(e.target.value)}
 				validation={['required', 'password']}
-			/>
+			/> */}
 
 			<FormSubmit asChild>
 				<button

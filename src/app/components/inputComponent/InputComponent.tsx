@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import './InputComponent.css'
 import {
 	FormField,
@@ -85,9 +85,7 @@ interface InputComponentProps {
 	compareValue?: string
 }
 
-import { useState } from 'react'
-
-function CombinedInput({
+function InputComponent({
 	id,
 	fieldName,
 	label,
@@ -99,50 +97,46 @@ function CombinedInput({
 	validation,
 	compareValue,
 }: InputComponentProps) {
-	const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+	const [showPassword, setshowPassword] = useState(true)
+
+	const passwordField = type === 'password'
 
 	const handleToggle = (e: React.MouseEvent) => {
 		e.preventDefault()
-		setIsPasswordVisible(!isPasswordVisible)
+		setshowPassword(!showPassword)
 	}
-
-	const isPasswordField = type === 'password'
 
 	return (
 		<FormField className='form__field' id={id} name={fieldName}>
 			<FormLabel className='form__label'>{label}</FormLabel>
-			<FormControl asChild>
-				<div className={isPasswordField ? 'password__container' : ''}>
+			<div className={passwordField ? 'password__container' : ''}>
+				<FormControl asChild>
 					<input
-						type={isPasswordField && isPasswordVisible ? 'text' : type}
+						type={passwordField && showPassword ? 'text' : 'password'}
 						className='form__input'
 						placeholder={placeholder}
 						value={value}
 						onChange={onChange}
 						required={required}
 					/>
-					{isPasswordField && (
-						<button
-							className='form__password--btn'
-							onClick={handleToggle}
-							aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
-						>
-							{isPasswordVisible ? (
-								<EyeClosedIcon className='form__icon' />
-							) : (
-								<EyeOpenIcon className='form__icon' />
-							)}
-						</button>
-					)}
-				</div>
-			</FormControl>
+				</FormControl>
+				{passwordField && (
+					<button className='form__password--btn' onClick={handleToggle}>
+						{!showPassword ? (
+							<EyeOpenIcon className='form__icon' />
+						) : (
+							<EyeClosedIcon className='form__icon' />
+						)}
+					</button>
+				)}
+			</div>
 			{validation &&
 				validation.map((validationProp) => {
 					const rule = validationArray[validationProp]
 					if (!rule) return null
-
 					const { match, message } = rule
 
+					// If match is a function, wrap it as a custom matcher
 					if (typeof match === 'function') {
 						return (
 							<FormMessage
@@ -155,20 +149,19 @@ function CombinedInput({
 								{message}
 							</FormMessage>
 						)
-					} else {
-						return (
-							<FormMessage
-								className='form__message'
-								key={validationProp}
-								match={match}
-							>
-								{message}
-							</FormMessage>
-						)
 					}
+					return (
+						<FormMessage
+							className='form__message'
+							key={validationProp}
+							match={match}
+						>
+							{message}
+						</FormMessage>
+					)
 				})}
 		</FormField>
 	)
 }
 
-export default CombinedInput
+export default InputComponent

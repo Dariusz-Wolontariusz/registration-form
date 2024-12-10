@@ -20,6 +20,7 @@ label {
 	color: #3b506bfb;
 	background-color: #f8fafc;
 	padding: 0.75rem;
+	padding-right: 2.5rem;
 	border: 1px solid #c9d6e2;
 	font-size: 1.2rem;
 	width: 100%;
@@ -54,4 +55,26 @@ label {
 .form__message {
 	color: #ff6b6b;
 	font-size: 0.85rem;
+}
+
+.password__container {
+	position: relative;
+	width: 100%;
+}
+
+.form__password--btn {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	z-index: 1;
+	padding: 0;
+}
+
+.form__icon {
+	width: 1.3rem;
+	height: 1.3rem;
 }
