@@ -1,7 +1,8 @@
 'use client'
 import './StepOne.css'
 // import PasswordInput from '../password/PasswordInput'
-import InputSection from '../inputSection/InputSection'
+import InputComponent from '../inputComponent/InputComponent'
+import PasswordInput from '../password/PasswordInput'
 import React, { useState } from 'react'
 import { Form, FormSubmit } from '@radix-ui/react-form'
 
@@ -38,18 +39,18 @@ export default function StepOne() {
 	return (
 		<Form className='form' onSubmit={handleSubmit}>
 			<h2>User Registration</h2>
-			<InputSection
+			<InputComponent
 				id='firstName'
 				fieldName='firstName'
 				placeholder='First Name'
 				label='First Name'
-				type='text'
+				type='radio'
 				value={firstName}
 				onChange={(e) => setFirstName(e.target.value)}
 				required
 				validation={['required', 'minLength']}
 			/>
-			<InputSection
+			<InputComponent
 				id='lastName'
 				fieldName='lastName'
 				placeholder='Last Name'
@@ -60,7 +61,7 @@ export default function StepOne() {
 				required
 				validation={['required', 'minLength']}
 			/>
-			<InputSection
+			<InputComponent
 				id='email'
 				fieldName='email'
 				placeholder='Email Address'
@@ -72,7 +73,7 @@ export default function StepOne() {
 				validation={['required', 'email']}
 			/>
 
-			<InputSection
+			<InputComponent
 				id='confirmEmail'
 				fieldName='confirmEmail'
 				placeholder='Confirm Email Address'
@@ -85,7 +86,7 @@ export default function StepOne() {
 				compareValue={email}
 			/>
 
-			<InputSection
+			<InputComponent
 				id='password'
 				fieldName='password'
 				label='Password'
@@ -97,7 +98,7 @@ export default function StepOne() {
 				validation={['required', 'password']}
 			/>
 
-			<InputSection
+			<InputComponent
 				id='confirmPassword'
 				fieldName='confirmPassword'
 				label='Confirm Password'
@@ -108,6 +109,17 @@ export default function StepOne() {
 				onChange={(e) => setConfirmPassword(e.target.value)}
 				validation={['required', 'confirmField']}
 				compareValue={password}
+			/>
+			<PasswordInput
+				id='password'
+				fieldName='password'
+				type='password'
+				label='Password'
+				placeholder='Password'
+				value={password}
+				required
+				onChange={(e) => setPassword(e.target.value)}
+				validation={['required', 'password']}
 			/>
 
 			<FormSubmit asChild>

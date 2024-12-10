@@ -1,47 +1,114 @@
+import React from 'react'
+import './PasswordInput.css'
 import { useState } from 'react'
 import { EyeOpenIcon, EyeClosedIcon } from '@radix-ui/react-icons'
+import {
+	FormField,
+	FormLabel,
+	FormControl,
+	FormMessage,
+} from '@radix-ui/react-form'
+
+const passValidationArray: ValidationRules = {}
 
 interface PasswordInputProps {
 	id: string
-	placeholder?: string
+	fieldName: string
+	type: 'password' | 'text'
+	placeholder: string
+	label: string
 	value: string
 	required: boolean
-	className: string
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	validation: (keyof typeof passValidationArray)[]
+	compareValue?: string
 }
 
-//id is obligatory, placeholder is optional with default 'Enter...' : they expect PasswordInputProps
-export default function PasswordInput({
+type ValidationType =
+	| 'valueMissing'
+	| 'typeMismatch'
+	| ((value: string) => boolean)
+	| ((value: string, compareValue: string) => boolean)
+
+type ValidationRule = {
+	match: ValidationType
+	message: string
+}
+
+type ValidationRules = {
+	[key: string]: ValidationRule
+}
+
+function PasswordInput({
 	id,
-	placeholder = 'Enter the password',
+	fieldName,
+	type,
+	placeholder,
+	label,
 	value,
 	required,
-	className,
 	onChange,
+	validation,
+	compareValue,
 }: PasswordInputProps) {
-	const [showPassword, setShowPassword] = useState(false)
+	const [isVisible, setIsVisible] = useState(false)
+
+	const handleToggle = (e: React.MouseEvent) => {
+		e.preventDefault()
+		setIsVisible(!isVisible)
+	}
 
 	return (
-		<div className='password__container'>
-			<input
-				id={id}
-				type={showPassword ? 'text' : 'password'}
-				className={className}
-				placeholder={placeholder}
-				value={value}
-				onChange={onChange}
-				required={required}
-			/>
-			<button
-				className='password__btn'
-				onClick={() => setShowPassword(!showPassword)}
-			>
-				{showPassword ? (
-					<EyeOpenIcon className='password__icon' />
-				) : (
-					<EyeClosedIcon className='password__icon' />
-				)}
-			</button>
-		</div>
+		<FormField className='form__field' id={id} name={fieldName}>
+			<FormLabel className='form__label'>{label}</FormLabel>
+			<FormControl asChild>
+				<div className='password__container'>
+					<input
+						className='form__input'
+						type={isVisible ? 'text' : 'password'}
+						placeholder={placeholder}
+						value={value}
+						onChange={onChange}
+						required={required}
+					/>
+					<button className='form__password--btn' onClick={handleToggle}>
+						{!isVisible ? (
+							<EyeOpenIcon className='form__icon' />
+						) : (
+							<EyeClosedIcon className='form__icon' />
+						)}
+					</button>
+				</div>
+			</FormControl>
+			{validation &&
+				validation.map((key) => {
+					const rule = passValidationArray[key]
+					if (!rule) return null
+
+					const { match, message } = rule
+
+					if (typeof match === 'function') {
+						return (
+							<FormMessage
+								className='form__message'
+								key={key}
+								match={(valueToValidate) =>
+									match(valueToValidate, compareValue || '')
+								}
+							>
+								{message}
+							</FormMessage>
+						)
+					} else {
+						return (
+							<FormMessage className='form__message' key={key} match={match}>
+								{message}
+							</FormMessage>
+						)
+					}
+				})}
+		</FormField>
 	)
 }
+
+export default PasswordInput
