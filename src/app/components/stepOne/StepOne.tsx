@@ -110,18 +110,6 @@ export default function StepOne() {
 				validation={['required', 'confirmField']}
 				compareValue={password}
 			/>
-			{/* <PasswordInput
-				id='password'
-				fieldName='password'
-				type='password'
-				label='Password'
-				placeholder='Password'
-				value={password}
-				required
-				onChange={(e) => setPassword(e.target.value)}
-				validation={['required', 'password']}
-			/> */}
-
 			<FormSubmit asChild>
 				<button
 					id='my-submit'

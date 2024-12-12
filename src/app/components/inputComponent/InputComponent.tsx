@@ -97,7 +97,7 @@ function InputComponent({
 	validation,
 	compareValue,
 }: InputComponentProps) {
-	const [showPassword, setshowPassword] = useState(true)
+	const [showPassword, setshowPassword] = useState(false)
 
 	const passwordField = type === 'password'
 
@@ -112,7 +112,7 @@ function InputComponent({
 			<div className={passwordField ? 'password__container' : ''}>
 				<FormControl asChild>
 					<input
-						type={passwordField && showPassword ? 'text' : 'password'}
+						type={passwordField && showPassword ? 'text' : type}
 						className='form__input'
 						placeholder={placeholder}
 						value={value}
