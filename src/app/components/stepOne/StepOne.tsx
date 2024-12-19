@@ -1,19 +1,18 @@
 'use client'
 import './StepOne.css'
-// import PasswordInput from '../password/PasswordInput'
 import InputComponent from '../inputComponent/InputComponent'
-import PasswordInput from '../password/PasswordInput'
 import React, { useState } from 'react'
 import { Form, FormSubmit } from '@radix-ui/react-form'
+import Link from 'next/link'
 
-export default function StepOne() {
-	const [firstName, setFirstName] = useState('')
-	const [lastName, setLastName] = useState('')
-	const [email, setEmail] = useState('')
-	const [confirmEmail, setConfirmEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const [confirmPassword, setConfirmPassword] = useState('')
-	const [isDisabled, setIsDisabled] = useState(false)
+export default function StepOne({ formData }: FormData) {
+	// const [firstName, setFirstName] = useState('')
+	// const [lastName, setLastName] = useState('')
+	// const [email, setEmail] = useState('')
+	// const [confirmEmail, setConfirmEmail] = useState('')
+	// const [password, setPassword] = useState('')
+	// const [confirmPassword, setConfirmPassword] = useState('')
+	// const [isDisabled, setIsDisabled] = useState(true)
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
@@ -26,7 +25,7 @@ export default function StepOne() {
 				password,
 			})
 		)
-		console.log({ firstName, lastName, email, password })
+		// console.log({ firstName, lastName, email, password })
 		setFirstName('')
 		setLastName('')
 		setEmail('')
@@ -120,6 +119,9 @@ export default function StepOne() {
 					Submit
 				</button>
 			</FormSubmit>
+			<Link href='/components/stepTwo' className='form__submit-btn'>
+				Next
+			</Link>
 		</Form>
 	)
 }

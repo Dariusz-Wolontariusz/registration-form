@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-	title: 'Pet Escort',
-	description: 'Rent a pet suited to your needs',
+	title: 'Registration Form',
+	description: 'Modern multistep registration form.',
 }
 
 export default function RootLayout({

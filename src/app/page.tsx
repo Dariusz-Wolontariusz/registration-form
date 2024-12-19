@@ -1,14 +1,17 @@
-import StepOne from './components/stepOne/StepOne'
+import React from 'react'
+import MultistepForm from './components/multistepForm/MultistepForm'
 
-export default function Home() {
+function Home() {
 	return (
 		<main>
 			<header>
 				<h1>Welcome to The Registration Form</h1>
 			</header>
 			<section className='form__container'>
-				<StepOne />
+				<MultistepForm />
 			</section>
 		</main>
 	)
 }
+
+export default Home
