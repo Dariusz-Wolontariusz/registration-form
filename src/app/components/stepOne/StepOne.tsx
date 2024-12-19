@@ -5,14 +5,19 @@ import React, { useState } from 'react'
 import { Form, FormSubmit } from '@radix-ui/react-form'
 import Link from 'next/link'
 
-export default function StepOne({ formData }: FormData) {
-	// const [firstName, setFirstName] = useState('')
-	// const [lastName, setLastName] = useState('')
-	// const [email, setEmail] = useState('')
-	// const [confirmEmail, setConfirmEmail] = useState('')
-	// const [password, setPassword] = useState('')
-	// const [confirmPassword, setConfirmPassword] = useState('')
-	// const [isDisabled, setIsDisabled] = useState(true)
+interface StepOneProps {
+	onNext: () => void
+}
+
+export default function StepOne({ onNext }: StepOneProps) {
+	//don't use types in here because TS infer them from the initial value
+	const [firstName, setFirstName] = useState('')
+	const [lastName, setLastName] = useState('')
+	const [email, setEmail] = useState('')
+	const [confirmEmail, setConfirmEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [confirmPassword, setConfirmPassword] = useState('')
+	const [isDisabled, setIsDisabled] = useState(true)
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
@@ -25,7 +30,7 @@ export default function StepOne({ formData }: FormData) {
 				password,
 			})
 		)
-		// console.log({ firstName, lastName, email, password })
+		console.log({ firstName, lastName, email, password })
 		setFirstName('')
 		setLastName('')
 		setEmail('')
