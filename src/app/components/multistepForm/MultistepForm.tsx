@@ -16,7 +16,7 @@ export default function MultistepForm() {
 
 	return (
 		<>
-			<CurrentStepComponent onNext={nextStep} />
+			<CurrentStepComponent onNext={nextStep} onPrev={previousStep} />
 		</>
 	)
 }

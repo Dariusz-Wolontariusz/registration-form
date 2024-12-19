@@ -4,7 +4,12 @@ import InputComponent from '../inputComponent/InputComponent'
 import React, { useState } from 'react'
 import { Form, FormSubmit } from '@radix-ui/react-form'
 
-function StepTwo() {
+interface StepTwoProps {
+	onNext: () => void
+	onPrev: () => void
+}
+
+function StepTwo({ onNext, onPrev }: StepTwoProps) {
 	const [address, setAddress] = useState('')
 
 	return (
@@ -21,6 +26,9 @@ function StepTwo() {
 				required
 				validation={['required', 'minLength']}
 			/>
+			<button onClick={onPrev} className='form__submit-btn'>
+				Prev
+			</button>
 		</Form>
 	)
 }

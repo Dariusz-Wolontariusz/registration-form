@@ -3,13 +3,14 @@ import './StepOne.css'
 import InputComponent from '../inputComponent/InputComponent'
 import React, { useState } from 'react'
 import { Form, FormSubmit } from '@radix-ui/react-form'
-import Link from 'next/link'
+// import Link from 'next/link'
 
 interface StepOneProps {
 	onNext: () => void
+	onPrev: () => void
 }
 
-export default function StepOne({ onNext }: StepOneProps) {
+export default function StepOne({ onNext, onPrev }: StepOneProps) {
 	//don't use types in here because TS infer them from the initial value
 	const [firstName, setFirstName] = useState('')
 	const [lastName, setLastName] = useState('')
@@ -124,9 +125,9 @@ export default function StepOne({ onNext }: StepOneProps) {
 					Submit
 				</button>
 			</FormSubmit>
-			<Link href='/components/stepTwo' className='form__submit-btn'>
+			<button onClick={onNext} className='form__submit-btn'>
 				Next
-			</Link>
+			</button>
 		</Form>
 	)
 }
