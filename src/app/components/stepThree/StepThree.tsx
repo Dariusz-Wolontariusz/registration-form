@@ -1,5 +1,5 @@
 'use client'
-import './StepTwo.css'
+import './StepThree.css'
 import InputComponent from '../inputComponent/InputComponent'
 import Button from '../button/button'
 import React, { useState } from 'react'
@@ -10,31 +10,26 @@ interface StepTwoProps {
 	onPrev: () => void
 }
 
-function StepTwo({ onNext, onPrev }: StepTwoProps) {
-	const [address, setAddress] = useState('')
+export default function StepThree({ onNext, onPrev }: StepTwoProps) {
+	const [payment, setPayment] = useState('')
 
 	return (
 		<Form className='form'>
-			<h2>User Details</h2>
+			<h2>Payment method</h2>
 			<InputComponent
-				id='address'
-				fieldName='address'
-				placeholder='Address'
-				label='Address'
+				id='payment'
+				fieldName='payment'
+				placeholder='Payment'
+				label='payment'
 				type='text'
-				value={address}
-				onChange={(e) => setAddress(e.target.value)}
+				value={payment}
+				onChange={(e) => setPayment(e.target.value)}
 				required
 				validation={['required', 'minLength']}
 			/>
 			<Button onClick={onPrev} className='form__submit-btn' type='button'>
 				Prev
 			</Button>
-			<Button onClick={onNext} className='form__submit-btn' type='button'>
-				Next
-			</Button>
 		</Form>
 	)
 }
-
-export default StepTwo

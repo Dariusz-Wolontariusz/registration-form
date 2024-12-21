@@ -3,46 +3,46 @@ import './StepOne.css'
 import InputComponent from '../inputComponent/InputComponent'
 import React, { useState } from 'react'
 import { Form, FormSubmit } from '@radix-ui/react-form'
-// import Link from 'next/link'
+import ButtonPanel from '../buttonPanel/ButtonPanel'
+
+interface FormData {
+	firstName: string
+	lastName: string
+	email: string
+	password: string
+}
 
 interface StepOneProps {
 	onNext: () => void
 	onPrev: () => void
+	isPrevDisabled: boolean
+	isNextDisabled: boolean
+	formData: FormData
+	updateFormData: (newData: Partial<FormData>) => void
 }
 
-export default function StepOne({ onNext, onPrev }: StepOneProps) {
-	//don't use types in here because TS infer them from the initial value
-	const [firstName, setFirstName] = useState('')
-	const [lastName, setLastName] = useState('')
-	const [email, setEmail] = useState('')
+export default function StepOne({
+	onNext,
+	onPrev,
+	isPrevDisabled,
+	isNextDisabled,
+	formData,
+	updateFormData,
+}: StepOneProps) {
+	//not using types in here because TS infer them from the initial value
+	// const [firstName, setFirstName] = useState('')
+	// const [lastName, setLastName] = useState('')
+	// const [email, setEmail] = useState('')
 	const [confirmEmail, setConfirmEmail] = useState('')
-	const [password, setPassword] = useState('')
+	// const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
-	const [isDisabled, setIsDisabled] = useState(true)
 
-	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-		e.preventDefault()
-		localStorage.setItem(
-			'userData',
-			JSON.stringify({
-				firstName,
-				lastName,
-				email,
-				password,
-			})
-		)
-		console.log({ firstName, lastName, email, password })
-		setFirstName('')
-		setLastName('')
-		setEmail('')
-		setConfirmEmail('')
-		setPassword('')
-		setConfirmPassword('')
-		setIsDisabled(true)
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		updateFormData({ [e.target.name]: e.target.value })
 	}
 
 	return (
-		<Form className='form' onSubmit={handleSubmit}>
+		<Form className='form'>
 			<h2>User Registration</h2>
 			<InputComponent
 				id='firstName'
@@ -50,8 +50,8 @@ export default function StepOne({ onNext, onPrev }: StepOneProps) {
 				placeholder='First Name'
 				label='First Name'
 				type='text'
-				value={firstName}
-				onChange={(e) => setFirstName(e.target.value)}
+				value={formData.firstName}
+				onChange={handleChange}
 				required
 				validation={['required', 'minLength']}
 			/>
@@ -61,8 +61,8 @@ export default function StepOne({ onNext, onPrev }: StepOneProps) {
 				placeholder='Last Name'
 				label='Last Name'
 				type='text'
-				value={lastName}
-				onChange={(e) => setLastName(e.target.value)}
+				value={formData.lastName}
+				onChange={handleChange}
 				required
 				validation={['required', 'minLength']}
 			/>
@@ -72,12 +72,11 @@ export default function StepOne({ onNext, onPrev }: StepOneProps) {
 				placeholder='Email Address'
 				label='Email Address'
 				type='email'
-				value={email}
-				onChange={(e) => setEmail(e.target.value)}
+				value={formData.email}
+				onChange={handleChange}
 				required
 				validation={['required', 'email']}
 			/>
-
 			<InputComponent
 				id='confirmEmail'
 				fieldName='confirmEmail'
@@ -88,21 +87,19 @@ export default function StepOne({ onNext, onPrev }: StepOneProps) {
 				onChange={(e) => setConfirmEmail(e.target.value)}
 				required
 				validation={['required', 'email', 'confirmField']}
-				compareValue={email}
+				compareValue={formData.email}
 			/>
-
 			<InputComponent
 				id='password'
 				fieldName='password'
 				label='Password'
 				type='password'
-				value={password}
+				value={formData.password}
 				placeholder='Password'
 				required
-				onChange={(e) => setPassword(e.target.value)}
+				onChange={handleChange}
 				validation={['required', 'password']}
 			/>
-
 			<InputComponent
 				id='confirmPassword'
 				fieldName='confirmPassword'
@@ -113,21 +110,14 @@ export default function StepOne({ onNext, onPrev }: StepOneProps) {
 				required
 				onChange={(e) => setConfirmPassword(e.target.value)}
 				validation={['required', 'confirmField']}
-				compareValue={password}
+				compareValue={formData.password}
 			/>
-			<FormSubmit asChild>
-				<button
-					id='my-submit'
-					className='form__submit-btn'
-					type='submit'
-					disabled={isDisabled}
-				>
-					Submit
-				</button>
-			</FormSubmit>
-			<button onClick={onNext} className='form__submit-btn'>
-				Next
-			</button>
+			<ButtonPanel
+				onNext={onNext}
+				onPrev={onPrev}
+				isPrevDisabled={isPrevDisabled}
+				isNextDisabled={isNextDisabled}
+			/>
 		</Form>
 	)
 }
