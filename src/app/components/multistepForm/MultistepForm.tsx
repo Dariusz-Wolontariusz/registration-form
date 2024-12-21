@@ -4,15 +4,7 @@ import React, { useState } from 'react'
 import StepOne from '../stepOne/StepOne'
 import StepTwo from '../stepTwo/StepTwo'
 import StepThree from '../stepThree/StepThree'
-import ButtonPanel from '../buttonPanel/ButtonPanel'
-import { log } from 'node:console'
-
-interface FormData {
-	firstName: string
-	lastName: string
-	email: string
-	password: string
-}
+import FormData from '@/app/types/formData'
 
 export default function MultistepForm() {
 	const steps = [StepOne, StepTwo, StepThree]
@@ -23,6 +15,11 @@ export default function MultistepForm() {
 		lastName: '',
 		email: '',
 		password: '',
+		street: '',
+		streetNumber: 0,
+		city: '',
+		postalCode: '0000',
+		country: '',
 	})
 
 	const CurrentStepComponent = steps[currentStep]
@@ -52,6 +49,7 @@ export default function MultistepForm() {
 			<CurrentStepComponent
 				formData={formData}
 				updateFormData={updateFormData}
+				handleSubmit={handleSubmit}
 				onNext={nextStep}
 				onPrev={previousStep}
 				isPrevDisabled={isPrevDisabled}

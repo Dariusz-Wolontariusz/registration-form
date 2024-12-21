@@ -7,15 +7,6 @@ interface ButtonPanelProps {
 	onPrev: () => void
 	isPrevDisabled: boolean
 	isNextDisabled: boolean
-	handleSubmit: (
-		e: React.FormEvent<HTMLFormElement>,
-		formData: {
-			firstName: string
-			lastName: string
-			email: string
-			password: string
-		}
-	) => void
 }
 
 export default function ({
@@ -23,7 +14,6 @@ export default function ({
 	onPrev,
 	isPrevDisabled,
 	isNextDisabled,
-	handleSubmit,
 }: ButtonPanelProps) {
 	return (
 		<>

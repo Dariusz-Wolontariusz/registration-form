@@ -2,15 +2,9 @@
 import './StepOne.css'
 import InputComponent from '../inputComponent/InputComponent'
 import React, { useState } from 'react'
-import { Form, FormSubmit } from '@radix-ui/react-form'
+import { Form } from '@radix-ui/react-form'
 import ButtonPanel from '../buttonPanel/ButtonPanel'
-
-interface FormData {
-	firstName: string
-	lastName: string
-	email: string
-	password: string
-}
+import FormData from '@/app/types/formData'
 
 interface StepOneProps {
 	onNext: () => void
@@ -19,6 +13,7 @@ interface StepOneProps {
 	isNextDisabled: boolean
 	formData: FormData
 	updateFormData: (newData: Partial<FormData>) => void
+	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
 export default function StepOne({
@@ -28,13 +23,10 @@ export default function StepOne({
 	isNextDisabled,
 	formData,
 	updateFormData,
+	handleSubmit,
 }: StepOneProps) {
-	//not using types in here because TS infer them from the initial value
-	// const [firstName, setFirstName] = useState('')
-	// const [lastName, setLastName] = useState('')
-	// const [email, setEmail] = useState('')
 	const [confirmEmail, setConfirmEmail] = useState('')
-	// const [password, setPassword] = useState('')
+
 	const [confirmPassword, setConfirmPassword] = useState('')
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +34,7 @@ export default function StepOne({
 	}
 
 	return (
-		<Form className='form'>
+		<Form className='form' onSubmit={handleSubmit}>
 			<h2>User Registration</h2>
 			<InputComponent
 				id='firstName'

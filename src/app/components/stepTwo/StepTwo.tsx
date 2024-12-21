@@ -1,38 +1,54 @@
 'use client'
 import './StepTwo.css'
 import InputComponent from '../inputComponent/InputComponent'
-import Button from '../button/button'
-import React, { useState } from 'react'
-import { Form, FormSubmit } from '@radix-ui/react-form'
+import ButtonPanel from '../buttonPanel/ButtonPanel'
+import React from 'react'
+import { Form } from '@radix-ui/react-form'
+import FormData from '@/app/types/formData'
 
 interface StepTwoProps {
 	onNext: () => void
 	onPrev: () => void
+	isPrevDisabled: boolean
+	isNextDisabled: boolean
+	formData: FormData
+	updateFormData: (newData: Partial<FormData>) => void
+	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
-function StepTwo({ onNext, onPrev }: StepTwoProps) {
-	const [address, setAddress] = useState('')
+function StepTwo({
+	onNext,
+	onPrev,
+	isPrevDisabled,
+	isNextDisabled,
+	updateFormData,
+	formData,
+	handleSubmit,
+}: StepTwoProps) {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		updateFormData({ [e.target.name]: e.target.value })
+	}
 
 	return (
-		<Form className='form'>
+		<Form className='form' onSubmit={handleSubmit}>
 			<h2>User Details</h2>
 			<InputComponent
-				id='address'
-				fieldName='address'
-				placeholder='Address'
-				label='Address'
+				id='street'
+				fieldName='street'
+				placeholder='Street'
+				label='Street'
 				type='text'
-				value={address}
-				onChange={(e) => setAddress(e.target.value)}
+				value={formData.street}
+				onChange={handleChange}
 				required
 				validation={['required', 'minLength']}
 			/>
-			<Button onClick={onPrev} className='form__submit-btn' type='button'>
-				Prev
-			</Button>
-			<Button onClick={onNext} className='form__submit-btn' type='button'>
-				Next
-			</Button>
+			<ButtonPanel
+				onNext={onNext}
+				onPrev={onPrev}
+				isPrevDisabled={isPrevDisabled}
+				isNextDisabled={isNextDisabled}
+			/>
 		</Form>
 	)
 }
