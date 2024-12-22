@@ -17,14 +17,25 @@ export default function ({
 }: ButtonPanelProps) {
 	return (
 		<>
-			<FormSubmit asChild>
+			{isNextDisabled ? (
+				<FormSubmit asChild>
+					<Button
+						id='my-submit'
+						className='form__submit-btn'
+						type='submit'
+						buttonText='Submit'
+					/>
+				</FormSubmit>
+			) : (
 				<Button
-					id='my-submit'
 					className='form__submit-btn'
-					type='submit'
-					buttonText='Submit'
+					onClick={onNext}
+					disabled={isNextDisabled}
+					type='button'
+					buttonText='Next'
 				/>
-			</FormSubmit>
+			)}
+
 			<Button
 				className='form__submit-btn'
 				type='button'
@@ -33,13 +44,13 @@ export default function ({
 				buttonText='Previous'
 			/>
 
-			<Button
+			{/* <Button
 				className='form__submit-btn'
 				onClick={onNext}
 				disabled={isNextDisabled}
 				type='button'
 				buttonText='Next'
-			/>
+			/> */}
 		</>
 	)
 }
