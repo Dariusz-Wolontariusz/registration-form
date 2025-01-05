@@ -4,7 +4,7 @@ import InputComponent from '../inputComponent/InputComponent'
 import React, { useState } from 'react'
 import { Form } from '@radix-ui/react-form'
 import ButtonPanel from '../buttonPanel/ButtonPanel'
-import FormData from '@/app/types/formData'
+import FormData from '@/app/lib/types'
 
 interface StepOneProps {
 	onNext: () => void

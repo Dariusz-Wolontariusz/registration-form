@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import FormData from '@/app/types/formData'
+import FormData from '@/app/lib/types'
 
 export default function useMultiStepForm(
 	initialData: FormData,

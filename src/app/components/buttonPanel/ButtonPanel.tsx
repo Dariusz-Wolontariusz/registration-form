@@ -9,7 +9,7 @@ interface ButtonPanelProps {
 	isNextDisabled: boolean
 }
 
-export default function ({
+export default function ButtonPanel({
 	onNext,
 	onPrev,
 	isPrevDisabled,
@@ -43,14 +43,6 @@ export default function ({
 				disabled={isPrevDisabled}
 				buttonText='Previous'
 			/>
-
-			{/* <Button
-				className='form__submit-btn'
-				onClick={onNext}
-				disabled={isNextDisabled}
-				type='button'
-				buttonText='Next'
-			/> */}
 		</>
 	)
 }
