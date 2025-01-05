@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../button/button'
+import Button from '../button/Button'
 import { FormSubmit } from '@radix-ui/react-form'
 
 interface ButtonPanelProps {

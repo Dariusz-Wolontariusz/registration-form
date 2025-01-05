@@ -1,16 +1,23 @@
 'use client'
 import './StepThree.css'
 import InputComponent from '../inputComponent/InputComponent'
-import Button from '../button/button'
 import React, { useState } from 'react'
 import { Form, FormSubmit } from '@radix-ui/react-form'
+import ButtonPanel from '../buttonPanel/ButtonPanel'
 
 interface StepTwoProps {
 	onNext: () => void
 	onPrev: () => void
+	isPrevDisabled: boolean
+	isNextDisabled: boolean
 }
 
-export default function StepThree({ onNext, onPrev }: StepTwoProps) {
+export default function StepThree({
+	onNext,
+	onPrev,
+	isPrevDisabled,
+	isNextDisabled,
+}: StepTwoProps) {
 	const [payment, setPayment] = useState('')
 
 	return (
@@ -27,9 +34,12 @@ export default function StepThree({ onNext, onPrev }: StepTwoProps) {
 				required
 				validation={['required', 'minLength']}
 			/>
-			<Button onClick={onPrev} className='form__submit-btn' type='button'>
-				Prev
-			</Button>
+			<ButtonPanel
+				onNext={onNext}
+				onPrev={onPrev}
+				isPrevDisabled={isPrevDisabled}
+				isNextDisabled={isNextDisabled}
+			/>
 		</Form>
 	)
 }
