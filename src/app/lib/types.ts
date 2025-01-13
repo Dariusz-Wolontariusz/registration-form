@@ -4,7 +4,7 @@ export default interface FormData {
 	email: string
 	password: string
 	street: string
-	streetNumber: number
+	streetNumber: string
 	city: string
 	postalCode: string
 	country: string

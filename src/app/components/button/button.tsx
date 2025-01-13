@@ -20,7 +20,8 @@ interface ButtonComponentProps {
 	onFocus?: React.FocusEventHandler<HTMLButtonElement>
 	onBlur?: React.FocusEventHandler<HTMLButtonElement>
 	onSubmit?: React.FocusEventHandler<HTMLButtonElement>
-	buttonText: React.ReactNode
+	buttonText?: React.ReactNode
+	children?: React.ReactNode
 	'aria-label'?: string
 	'aria-expanded'?: boolean
 	'aria-pressed'?: boolean
@@ -48,6 +49,7 @@ export default function Button({
 	onBlur,
 	onSubmit,
 	buttonText,
+	children,
 	'aria-label': ariaLabel,
 	'aria-expanded': ariaExpanded,
 	'aria-pressed': ariaPressed,
@@ -80,6 +82,7 @@ export default function Button({
 			aria-controls={ariaControls}
 		>
 			{buttonText}
+			{children}
 		</button>
 	)
 }

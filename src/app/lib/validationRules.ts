@@ -2,6 +2,7 @@ type ValidationMatch =
 	| 'valueMissing'
 	| 'typeMismatch'
 	| ((value: string) => boolean)
+	| ((value: number | string) => boolean)
 	| ((value: string, compareValue: string) => boolean)
 
 type ValidationRule = {
@@ -21,6 +22,10 @@ export const validationRules: ValidationRules = {
 	minLength: {
 		match: (value: string) => value.length < 3,
 		message: '* Must be at least 3 characters long',
+	},
+	exactLength: {
+		match: (value: number | string) => value.toString().length === 4,
+		message: '* Must be 4 characters long',
 	},
 	email: {
 		match: 'typeMismatch',

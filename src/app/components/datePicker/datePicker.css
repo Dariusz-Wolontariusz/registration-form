@@ -1,0 +1,57 @@
+.date-picker {
+	position: relative;
+	width: 100%;
+	max-width: 500px;
+	margin: 20px 0 10px;
+}
+
+.date-picker-label {
+	display: block;
+	font-size: 1rem;
+	color: #5f6e88;
+	font-weight: bolder;
+	margin-bottom: 0.5rem;
+}
+
+.trigger-btn {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0.75rem;
+	background-color: #f8fafc;
+	border: 1px solid #c9d6e2;
+	border-radius: 8px;
+	font-size: 1.2rem;
+	color: #3b506bfb;
+	cursor: pointer;
+	transition: border-color 0.3s ease;
+}
+
+.trigger-btn:hover {
+	border-color: #89c4f4;
+}
+
+.trigger-btn:focus {
+	outline: none;
+	border-color: #89c4f4;
+	box-shadow: 0 0 5px rgba(137, 196, 244, 0.5);
+}
+
+.trigger-btn svg {
+	width: 1.3rem;
+	height: 1.3rem;
+	margin-right: 0.5rem;
+}
+
+.popover-content {
+	background-color: white;
+	padding: 10px;
+	border: 1px solid #c9d6e2;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
+	position: absolute;
+	top: calc(100% + 5px);
+	left: 0;
+}

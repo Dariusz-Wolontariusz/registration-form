@@ -5,51 +5,10 @@ import {
 	FormLabel,
 	FormControl,
 	FormMessage,
+	FormValidityState,
 } from '@radix-ui/react-form'
 import { EyeOpenIcon, EyeClosedIcon } from '@radix-ui/react-icons'
 import { validationRules } from '@/app/lib/validationRules'
-
-// const validationArray: ValidationRules = {
-// 	required: {
-// 		match: 'valueMissing',
-// 		message: '* This field is required',
-// 	},
-// 	minLength: {
-// 		match: (value: string) => value.length < 3,
-// 		message: '* Must be at least 3 characters long',
-// 	},
-// 	email: {
-// 		match: 'typeMismatch',
-// 		message: '* Please enter a valid email address',
-// 	},
-// 	password: {
-// 		match: (value: string) =>
-// 			!/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
-// 				value
-// 			),
-// 		message:
-// 			'* Password must be at least 8 characters long, contain 1 uppercase, 1 digit and 1 special character',
-// 	},
-// 	confirmField: {
-// 		match: (value: string, compareValue: string) => value !== compareValue,
-// 		message: "* Entered email address doesn't match with the previous one",
-// 	},
-// }
-
-// type ValidMatchType =
-// 	| 'valueMissing'
-// 	| 'typeMismatch'
-// 	| ((value: string) => boolean)
-// 	| ((value: string, compareValue: string) => boolean)
-
-// type ValidationRule = {
-// 	match: ValidMatchType
-// 	message: string
-// }
-
-// type ValidationRules = {
-// 	[key: string]: ValidationRule
-// }
 
 interface InputComponentProps {
 	id: string
@@ -98,7 +57,8 @@ function InputComponent({
 	validation,
 	compareValue,
 }: InputComponentProps) {
-	const [showPassword, setshowPassword] = useState(false)
+	const [showPassword, setshowPassword] = useState<boolean>(false)
+	const [isValid, setIsValid] = useState<boolean>(false)
 
 	const passwordField = type === 'password'
 
@@ -110,27 +70,33 @@ function InputComponent({
 	return (
 		<FormField className='form__field' id={id} name={fieldName}>
 			{label && <FormLabel className='form__label'>{label}</FormLabel>}
-			<div className={passwordField ? 'password__container' : ''}>
-				<FormControl asChild>
-					<input
-						type={passwordField && showPassword ? 'text' : type}
-						className='form__input'
-						placeholder={placeholder}
-						value={value}
-						onChange={onChange}
-						required={required}
-					/>
-				</FormControl>
-				{passwordField && (
-					<button className='form__password--btn' onClick={handleToggle}>
-						{!showPassword ? (
-							<EyeOpenIcon className='form__icon' />
-						) : (
-							<EyeClosedIcon className='form__icon' />
+			<FormValidityState>
+				{(validity) => (
+					<div className={passwordField ? 'password__container' : ''}>
+						<FormControl asChild>
+							<input
+								type={passwordField && showPassword ? 'text' : type}
+								className='form__input'
+								placeholder={placeholder}
+								value={value}
+								onChange={onChange}
+								required={required}
+							/>
+						</FormControl>
+
+						{passwordField && (
+							<button className='form__password--btn' onClick={handleToggle}>
+								{!showPassword ? (
+									<EyeOpenIcon className='form__icon' />
+								) : (
+									<EyeClosedIcon className='form__icon' />
+								)}
+							</button>
 						)}
-					</button>
+					</div>
 				)}
-			</div>
+			</FormValidityState>
+			*
 			{validation &&
 				validation.map((validationProp) => {
 					const rule = validationRules[validationProp]

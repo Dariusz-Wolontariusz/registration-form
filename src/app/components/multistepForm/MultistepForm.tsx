@@ -25,7 +25,7 @@ export default function MultistepForm() {
 			email: '',
 			password: '',
 			street: '',
-			streetNumber: 0,
+			streetNumber: '',
 			city: '',
 			postalCode: '0000',
 			country: '',

@@ -9,6 +9,7 @@ export default function useMultiStepForm(
 	const [formData, setFormData] = React.useState<FormData>(initialData)
 
 	const nextStep = () => setCurrentStep((next) => next + 1)
+
 	const previousStep = () => setCurrentStep((prev) => prev - 1)
 
 	const updateFormData = (newData: Partial<FormData>) => {

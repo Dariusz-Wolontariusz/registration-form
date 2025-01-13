@@ -5,6 +5,7 @@ import ButtonPanel from '../buttonPanel/ButtonPanel'
 import React from 'react'
 import { Form } from '@radix-ui/react-form'
 import FormData from '@/app/lib/types'
+import { DatePicker } from '../datePicker/DatePicker'
 
 interface StepTwoProps {
 	onNext: () => void
@@ -43,6 +44,40 @@ function StepTwo({
 				required
 				validation={['required', 'minLength']}
 			/>
+			<InputComponent
+				id='streetNumber'
+				fieldName='streetNumber'
+				placeholder='Street Number'
+				label='Street Number'
+				type='text'
+				value={formData.streetNumber}
+				onChange={handleChange}
+				required
+				validation={['required']}
+			/>
+			<InputComponent
+				id='postalCode'
+				fieldName='postalCode'
+				placeholder='Post Code'
+				label='Street'
+				type='number'
+				value={formData.postalCode}
+				onChange={handleChange}
+				required
+				validation={['required', 'exactLength']}
+			/>
+			<InputComponent
+				id='city'
+				fieldName='city'
+				placeholder='City'
+				label='City'
+				type='text'
+				value={formData.city}
+				onChange={handleChange}
+				required
+				validation={['required']}
+			/>
+			<DatePicker />
 			<ButtonPanel
 				onNext={onNext}
 				onPrev={onPrev}
