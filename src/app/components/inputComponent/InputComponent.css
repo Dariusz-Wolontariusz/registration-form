@@ -1,4 +1,4 @@
-.form__field {
+.form-field {
 	display: flex;
 	flex-direction: column;
 	margin: 20px 0 10px;
@@ -8,7 +8,7 @@
 	max-width: 500px;
 }
 
-label {
+.form-label {
 	display: block;
 	font-size: 1rem;
 	color: #5f6e88;
@@ -16,7 +16,7 @@ label {
 	/* margin-bottom: 0.5rem; */
 }
 
-.form__input {
+.form-input {
 	color: #3b506bfb;
 	background-color: #f8fafc;
 	padding: 0.75rem;
@@ -28,41 +28,41 @@ label {
 	transition: border-color 0.3s ease;
 }
 
-.form__input:focus {
+.form-input:focus {
 	border-color: #89c4f4;
 	outline: none;
 	box-shadow: 0 0 5px rgba(137, 196, 244, 0.5);
 }
 
-.form__input[data-invalid] {
+.form-input[data-invalid] {
 	border-color: #ff6b6b;
 }
 
-.form__input:focus[data-invalid] {
+.form-input:focus[data-invalid] {
 	border-color: #f43838;
 	box-shadow: 0 0 5px rgba(252, 106, 106, 0.499);
 }
 
-.form__input[data-valid] {
+.form-input[data-valid] {
 	border-color: #27d924;
 }
 
-.form__input::placeholder {
+.form-input::placeholder {
 	color: #3b506b;
 	opacity: 0.4;
 }
 
-.form__message {
+.form-message {
 	color: #ff6b6b;
 	font-size: 0.85rem;
 }
 
-.password__container {
+.password-container {
 	position: relative;
 	width: 100%;
 }
 
-.form__password--btn {
+.form-password__btn {
 	position: absolute;
 	right: 10px;
 	top: 50%;
@@ -74,7 +74,7 @@ label {
 	padding: 0;
 }
 
-.form__icon {
+.form-icon {
 	width: 1.3rem;
 	height: 1.3rem;
 }

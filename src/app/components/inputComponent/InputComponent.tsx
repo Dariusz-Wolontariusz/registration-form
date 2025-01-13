@@ -68,15 +68,15 @@ function InputComponent({
 	}
 
 	return (
-		<FormField className='form__field' id={id} name={fieldName}>
-			{label && <FormLabel className='form__label'>{label}</FormLabel>}
+		<FormField className='form-field' id={id} name={fieldName}>
+			{label && <FormLabel className='form-label'>{label}</FormLabel>}
 			<FormValidityState>
 				{(validity) => (
-					<div className={passwordField ? 'password__container' : ''}>
+					<div className={passwordField ? 'password-container' : ''}>
 						<FormControl asChild>
 							<input
 								type={passwordField && showPassword ? 'text' : type}
-								className='form__input'
+								className='form-input'
 								placeholder={placeholder}
 								value={value}
 								onChange={onChange}
@@ -85,18 +85,18 @@ function InputComponent({
 						</FormControl>
 
 						{passwordField && (
-							<button className='form__password--btn' onClick={handleToggle}>
+							<button className='form-password__btn' onClick={handleToggle}>
 								{!showPassword ? (
-									<EyeOpenIcon className='form__icon' />
+									<EyeOpenIcon className='form-icon' />
 								) : (
-									<EyeClosedIcon className='form__icon' />
+									<EyeClosedIcon className='form-icon' />
 								)}
 							</button>
 						)}
 					</div>
 				)}
 			</FormValidityState>
-			*
+
 			{validation &&
 				validation.map((validationProp) => {
 					const rule = validationRules[validationProp]
@@ -107,7 +107,7 @@ function InputComponent({
 					if (typeof match === 'function') {
 						return (
 							<FormMessage
-								className='form__message'
+								className='form-message'
 								key={validationProp}
 								match={(valueToValidate) =>
 									match(valueToValidate, compareValue || '')
@@ -119,7 +119,7 @@ function InputComponent({
 					}
 					return (
 						<FormMessage
-							className='form__message'
+							className='form-message'
 							key={validationProp}
 							match={match}
 						>

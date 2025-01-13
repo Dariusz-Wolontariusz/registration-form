@@ -28,7 +28,7 @@ h2 {
 	color: #3b506b;
 }
 
-.form__submit-btn {
+.form-submit__btn {
 	display: block;
 	margin: 1rem auto;
 	width: 50%;
@@ -44,52 +44,23 @@ h2 {
 	transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.form__submit-btn:hover {
+.form-submit__btn:hover {
 	background: linear-gradient(90deg, #6fa3ef, #89c4f4);
 	transform: translateY(-2px);
 }
 
-.form__submit-btn:active {
+.form-submit__btn:active {
 	transform: translateY(0);
 }
-.form__submit-btn:focus {
+.form-submit__btn:focus {
 	/* background: red; */
 	border: solid #4f8ce7 1px;
 	box-shadow: 0 0 5px rgb(43, 133, 206);
 }
 
-.form__submit-btn:disabled {
+.form-submit__btn:disabled {
 	background: linear-gradient(90deg, #d3d3d3, #b0b0b0);
 	color: #ffffff;
 	cursor: not-allowed;
 	opacity: 0.6;
 }
-
-/* .password__container {
-	display: flex;
-	position: relative;
-	width: 100%;
-	align-items: center;
-}
-
-.password__input {
-	flex-grow: 1;
-	padding-right: 3rem;
-}
-
-.password__btn {
-	position: absolute;
-	right: 5px;
-	border: none;
-	cursor: pointer;
-	padding: 5px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.password__icon {
-	height: 20px;
-	width: 20px;
-	color: #3b506b;
-} */

@@ -7,7 +7,7 @@ function Home() {
 			<header>
 				<h1>Welcome to The Registration Form</h1>
 			</header>
-			<section className='form__container'>
+			<section className='form-container'>
 				<MultistepForm />
 			</section>
 		</main>
