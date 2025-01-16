@@ -5,7 +5,7 @@ function Home() {
 	return (
 		<main>
 			<header>
-				<h1>Welcome to The Registration Form</h1>
+				<title>Welcome to The Registration Form</title>
 			</header>
 			<section className='form-container'>
 				<MultistepForm />

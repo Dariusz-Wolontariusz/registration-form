@@ -69,12 +69,17 @@ function InputComponent({
 
 	return (
 		<FormField className='form-field' id={id} name={fieldName}>
-			{label && <FormLabel className='form-label'>{label}</FormLabel>}
+			{label && (
+				<FormLabel className='form-label' htmlFor={id}>
+					{label}
+				</FormLabel>
+			)}
 			<FormValidityState>
 				{(validity) => (
 					<div className={passwordField ? 'password-container' : ''}>
 						<FormControl asChild>
 							<input
+								id={id}
 								type={passwordField && showPassword ? 'text' : type}
 								className='form-input'
 								placeholder={placeholder}
@@ -85,7 +90,11 @@ function InputComponent({
 						</FormControl>
 
 						{passwordField && (
-							<button className='form-password__btn' onClick={handleToggle}>
+							<button
+								className='form-password__btn'
+								aria-label='show password button'
+								onClick={handleToggle}
+							>
 								{!showPassword ? (
 									<EyeOpenIcon className='form-icon' />
 								) : (

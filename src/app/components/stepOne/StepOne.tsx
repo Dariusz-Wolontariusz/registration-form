@@ -35,7 +35,7 @@ export default function StepOne({
 
 	return (
 		<Form className='form' onSubmit={handleSubmit}>
-			<h2>User Registration</h2>
+			<h1>User Registration</h1>
 			<InputComponent
 				id='firstName'
 				fieldName='firstName'
