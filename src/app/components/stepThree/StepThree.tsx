@@ -27,7 +27,7 @@ export default function StepThree({
 				id='payment'
 				fieldName='payment'
 				placeholder='Payment'
-				label='payment'
+				label='Fill in a payment method'
 				type='text'
 				value={payment}
 				onChange={(e) => setPayment(e.target.value)}

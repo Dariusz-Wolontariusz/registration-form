@@ -40,7 +40,7 @@ export default function StepOne({
 				id='firstName'
 				fieldName='firstName'
 				placeholder='First Name'
-				label='First Name'
+				label='Fill in your first name'
 				type='text'
 				value={formData.firstName}
 				onChange={handleChange}
@@ -51,7 +51,7 @@ export default function StepOne({
 				id='lastName'
 				fieldName='lastName'
 				placeholder='Last Name'
-				label='Last Name'
+				label='Fill in your last name'
 				type='text'
 				value={formData.lastName}
 				onChange={handleChange}
@@ -62,7 +62,7 @@ export default function StepOne({
 				id='email'
 				fieldName='email'
 				placeholder='Email Address'
-				label='Email Address'
+				label='Fill in your email address'
 				type='email'
 				value={formData.email}
 				onChange={handleChange}
@@ -72,8 +72,8 @@ export default function StepOne({
 			<InputComponent
 				id='confirmEmail'
 				fieldName='confirmEmail'
-				placeholder='Confirm Email Address'
-				label='Confirm Email Address'
+				placeholder='Confirm your email'
+				label='Confirm your email address'
 				type='email'
 				value={confirmEmail}
 				onChange={(e) => setConfirmEmail(e.target.value)}
@@ -84,7 +84,7 @@ export default function StepOne({
 			<InputComponent
 				id='password'
 				fieldName='password'
-				label='Password'
+				label='Type a new password'
 				type='password'
 				value={formData.password}
 				placeholder='Password'
@@ -95,7 +95,7 @@ export default function StepOne({
 			<InputComponent
 				id='confirmPassword'
 				fieldName='confirmPassword'
-				label='Confirm Password'
+				label='Confirm a new password'
 				placeholder='Confirm Password'
 				type='password'
 				value={confirmPassword}

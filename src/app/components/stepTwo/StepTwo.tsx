@@ -37,7 +37,7 @@ function StepTwo({
 				id='street'
 				fieldName='street'
 				placeholder='Street'
-				label='Street'
+				label='Fill in your street'
 				type='text'
 				value={formData.street}
 				onChange={handleChange}
@@ -48,7 +48,7 @@ function StepTwo({
 				id='streetNumber'
 				fieldName='streetNumber'
 				placeholder='Street Number'
-				label='Street Number'
+				label='Fill in your street number'
 				type='text'
 				value={formData.streetNumber}
 				onChange={handleChange}
@@ -59,7 +59,7 @@ function StepTwo({
 				id='postalCode'
 				fieldName='postalCode'
 				placeholder='Post Code'
-				label='Street'
+				label='Fill in your post code'
 				type='number'
 				value={formData.postalCode}
 				onChange={handleChange}
@@ -70,7 +70,7 @@ function StepTwo({
 				id='city'
 				fieldName='city'
 				placeholder='City'
-				label='City'
+				label='Fill in your City'
 				type='text'
 				value={formData.city}
 				onChange={handleChange}

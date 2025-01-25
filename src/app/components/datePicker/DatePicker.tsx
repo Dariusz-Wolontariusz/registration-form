@@ -23,7 +23,7 @@ export function DatePicker() {
 	return (
 		<div className='date-picker'>
 			<label htmlFor='birthday' className='date-picker-label'>
-				Your Birthday
+				Pick your birthday
 			</label>
 
 			<Popover>
