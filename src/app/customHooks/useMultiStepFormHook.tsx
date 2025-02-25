@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import FormData from '@/app/lib/types'
+import { FormData, StepComponentType } from '@/app/lib/types'
 
 export default function useMultiStepForm(
 	initialData: FormData,
-	steps: React.ComponentType<any>[]
+	steps: StepComponentType[]
 ) {
 	const [currentStep, setCurrentStep] = useState<number>(0)
 	const [formData, setFormData] = React.useState<FormData>(initialData)

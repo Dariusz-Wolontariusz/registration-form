@@ -4,19 +4,9 @@ import InputComponent from '../inputComponent/InputComponent'
 import React, { useState } from 'react'
 import { Form } from '@radix-ui/react-form'
 import ButtonPanel from '../buttonPanel/ButtonPanel'
-import FormData from '@/app/lib/types'
+import { StepComponentType } from '@/app/lib/types'
 
-interface StepOneProps {
-	onNext: () => void
-	onPrev: () => void
-	isPrevDisabled: boolean
-	isNextDisabled: boolean
-	formData: FormData
-	updateFormData: (newData: Partial<FormData>) => void
-	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
-}
-
-export default function StepOne({
+const StepOne: StepComponentType = ({
 	onNext,
 	onPrev,
 	isPrevDisabled,
@@ -24,7 +14,7 @@ export default function StepOne({
 	formData,
 	updateFormData,
 	handleSubmit,
-}: StepOneProps) {
+}) => {
 	const [confirmEmail, setConfirmEmail] = useState('')
 
 	const [confirmPassword, setConfirmPassword] = useState('')
@@ -113,3 +103,5 @@ export default function StepOne({
 		</Form>
 	)
 }
+
+export default StepOne

@@ -2,22 +2,16 @@
 import './StepThree.css'
 import InputComponent from '../inputComponent/InputComponent'
 import React, { useState } from 'react'
-import { Form, FormSubmit } from '@radix-ui/react-form'
+import { Form } from '@radix-ui/react-form'
 import ButtonPanel from '../buttonPanel/ButtonPanel'
+import { StepComponentType } from '@/app/lib/types'
 
-interface StepTwoProps {
-	onNext: () => void
-	onPrev: () => void
-	isPrevDisabled: boolean
-	isNextDisabled: boolean
-}
-
-export default function StepThree({
+const StepThree: StepComponentType = ({
 	onNext,
 	onPrev,
 	isPrevDisabled,
 	isNextDisabled,
-}: StepTwoProps) {
+}) => {
 	const [payment, setPayment] = useState('')
 
 	return (
@@ -43,3 +37,5 @@ export default function StepThree({
 		</Form>
 	)
 }
+
+export default StepThree

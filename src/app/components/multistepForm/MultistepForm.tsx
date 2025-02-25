@@ -1,10 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import StepOne from '../stepOne/StepOne'
 import StepTwo from '../stepTwo/StepTwo'
 import StepThree from '../stepThree/StepThree'
-import FormData from '@/app/lib/types'
 import useMultiStepForm from '@/app/customHooks/useMultiStepFormHook'
 
 export default function MultistepForm() {

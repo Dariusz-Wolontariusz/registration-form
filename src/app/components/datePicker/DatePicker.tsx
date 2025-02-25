@@ -8,7 +8,7 @@ import {
 } from '@radix-ui/react-popover'
 import { CalendarIcon } from '@radix-ui/react-icons'
 import Calendar from '../calendar/Calendar'
-import './DatePicker.css'
+import './datePicker.module.css'
 
 export function DatePicker() {
 	const [selectedDate, setSelectedDate] = useState<Date>()

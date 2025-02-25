@@ -58,7 +58,7 @@ function InputComponent({
 	compareValue,
 }: InputComponentProps) {
 	const [showPassword, setshowPassword] = useState<boolean>(false)
-	const [isValid, setIsValid] = useState<boolean>(false)
+	// const [isValid, setIsValid] = useState<boolean>(false)
 
 	const passwordField = type === 'password'
 
@@ -75,7 +75,7 @@ function InputComponent({
 				</FormLabel>
 			)}
 			<FormValidityState>
-				{(validity) => (
+				{() => (
 					<div className={passwordField ? 'password-container' : ''}>
 						<FormControl asChild>
 							<input
