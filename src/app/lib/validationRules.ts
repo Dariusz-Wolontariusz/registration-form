@@ -24,8 +24,8 @@ export const validationRules: ValidationRules = {
 		message: '* Must be at least 3 characters long',
 	},
 	exactLength: {
-		match: (value: number | string) => value.toString().length === 4,
-		message: '* Must be 4 characters long',
+		match: (value: string) => !/^\d{4}$/.test(value),
+		message: '* Must be exactly 4 digits',
 	},
 	email: {
 		match: 'typeMismatch',

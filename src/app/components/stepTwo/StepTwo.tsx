@@ -6,6 +6,7 @@ import React from 'react'
 import { Form } from '@radix-ui/react-form'
 import FormData from '@/app/lib/types'
 import { DatePicker } from '../datePicker/DatePicker'
+import { SimplifiedDatePicker } from '../SimplyfiedDatePicker/SimplifiedDatePicker'
 
 interface StepTwoProps {
 	onNext: () => void
@@ -60,7 +61,7 @@ function StepTwo({
 				fieldName='postalCode'
 				placeholder='Post Code'
 				label='Fill in your post code'
-				type='number'
+				type='text'
 				value={formData.postalCode}
 				onChange={handleChange}
 				required
@@ -78,6 +79,7 @@ function StepTwo({
 				validation={['required']}
 			/>
 			<DatePicker />
+			{/* <SimplifiedDatePicker /> */}
 			<ButtonPanel
 				onNext={onNext}
 				onPrev={onPrev}

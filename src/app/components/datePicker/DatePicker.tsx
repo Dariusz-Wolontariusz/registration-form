@@ -2,14 +2,11 @@
 
 import { useState } from 'react'
 import {
-	PopoverContent,
 	Popover,
+	PopoverContent,
 	PopoverTrigger,
-	PopoverAnchor,
-	PopoverPortal,
 } from '@radix-ui/react-popover'
 import { CalendarIcon } from '@radix-ui/react-icons'
-import Button from '../button/button'
 import Calendar from '../calendar/Calendar'
 import './DatePicker.css'
 
@@ -25,19 +22,16 @@ export function DatePicker() {
 			<label htmlFor='birthday' className='date-picker-label'>
 				Pick your birthday
 			</label>
-
 			<Popover>
 				<PopoverTrigger asChild>
-					<Button className='trigger-btn' type='button'>
+					<button className='trigger-btn' type='button'>
 						<CalendarIcon />
 						{selectedDate ? selectedDate.toLocaleDateString() : 'Select Date'}
-					</Button>
+					</button>
 				</PopoverTrigger>
-				<PopoverPortal>
-					<PopoverContent className='popover-content' sideOffset={5}>
-						<Calendar selected={selectedDate} onSelect={handleSelectedDate} />
-					</PopoverContent>
-				</PopoverPortal>
+				<PopoverContent className='popover-content' sideOffset={5}>
+					<Calendar selected={selectedDate} onSelect={handleSelectedDate} />
+				</PopoverContent>
 			</Popover>
 		</div>
 	)
