@@ -8,28 +8,47 @@ import {
 } from '@radix-ui/react-popover'
 import { CalendarIcon } from '@radix-ui/react-icons'
 import Calendar from '../calendar/Calendar'
-import './datePicker.module.css'
+import styles from './DatePicker.module.css'
+import type { FormData } from '@/app/lib/types'
 
-export function DatePicker() {
-	const [selectedDate, setSelectedDate] = useState<Date>()
+interface DatePickerProps {
+	value?: Date
+	onChange?: (date: Date | undefined) => void
+	formData?: FormData
+	updateFormData?: (data: Partial<FormData>) => void
+}
+
+export function DatePicker({
+	value,
+	onChange,
+	formData,
+	updateFormData,
+}: DatePickerProps) {
+	const [selectedDate, setSelectedDate] = useState<Date | undefined>(value)
 
 	const handleSelectedDate = (date: Date | undefined) => {
 		setSelectedDate(date)
+		if (onChange) {
+			onChange(date)
+		}
+		if (updateFormData) {
+			updateFormData({ birthday: date })
+		}
 	}
 
 	return (
-		<div className='date-picker'>
-			<label htmlFor='birthday' className='date-picker-label'>
+		<div className={styles['date-picker']}>
+			<label htmlFor='birthday' className={styles['date-picker-label']}>
 				Pick your birthday
 			</label>
 			<Popover>
 				<PopoverTrigger asChild>
-					<button className='trigger-btn' type='button'>
+					<button className={styles['trigger-btn']} type='button'>
 						<CalendarIcon />
 						{selectedDate ? selectedDate.toLocaleDateString() : 'Select Date'}
 					</button>
 				</PopoverTrigger>
-				<PopoverContent className='popover-content' sideOffset={5}>
+				<PopoverContent className={styles['popover-content']} sideOffset={5}>
 					<Calendar selected={selectedDate} onSelect={handleSelectedDate} />
 				</PopoverContent>
 			</Popover>

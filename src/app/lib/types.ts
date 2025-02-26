@@ -8,6 +8,7 @@ export interface FormData {
 	city: string
 	postalCode: string
 	country: string
+	birthday?: Date
 }
 
 export interface StepProps {
